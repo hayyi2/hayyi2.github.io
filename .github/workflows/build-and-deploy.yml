@@ -2,7 +2,10 @@ name: Build & Deploy
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
+  
+permissions: 
+  actions: write
 
 jobs:
   build:
@@ -29,5 +32,3 @@ jobs:
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
