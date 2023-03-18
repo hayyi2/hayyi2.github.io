@@ -1,0 +1,21 @@
+<footer class="md:hidden text-gray-500">
+    <div class="flex items-center">
+        {% if metadata.contact.github %}
+            <div class="inline-flex mr-2">
+                <a href="{{ metadata.contact.github.url }}" target="_blank" class="inline-flex items-center underline hover:no-underline font-semibold">
+                    <span class="mr-0.5">{% include "icons/brand-github.html" %}</span>
+                    <span>{{ metadata.contact.github.username }}</span>
+                </a>
+            </div>
+        {% endif %}
+        {% if metadata.contact.whatsapp %}
+            <div class="inline-flex">
+                <a href="{{ "https://wa.me/" + metadata.contact.whatsapp.number }}" target="_blank" class="inline-flex items-center underline hover:no-underline font-semibold">
+                    <span class="mr-0.5">{% include "icons/brand-whatsapp.html" %}</span>
+                    <span>whatsapp</span>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+    <span>Copyright &copy; 2023</span>
+</footer>

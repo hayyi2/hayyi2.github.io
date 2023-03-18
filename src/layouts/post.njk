@@ -1,0 +1,32 @@
+{% extends "./base.njk" %}
+
+{% block contentLayout %}
+    <div class="pb-4">
+        {% if title_html %}
+            <h1 class="mb-2 text-2xl font-medium text-gray-900 sm:text-3xl sm:tracking-tight lg:text-4xl">{{ title_html | safe }}</h1>
+        {% elif title %}
+            <h1 class="mb-2 text-2xl font-medium text-gray-900 sm:text-3xl sm:tracking-tight lg:text-4xl">{{ title }}</h1>
+        {% endif %}
+        <div class="flex text-gray-500">
+            <div class="inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 icon icon-tabler icon-tabler-calendar-event" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+                    <path d="M16 3l0 4"></path>
+                    <path d="M8 3l0 4"></path>
+                    <path d="M4 11l16 0"></path>
+                    <path d="M8 15h2v2h-2z"></path>
+                </svg>
+                <span class="text-base font-semibold">{{ page.date | dateFormat }}</span>
+            </div>
+        </div>
+    </div>
+    {% if thumbnail %}
+        <div class="mb-4 md:mb-6 pt-4">
+            <img src="{{ thumbnail }}" alt="{{ title }}" class="rounded-lg">
+        </div>
+    {% endif %}
+    <div class="prose max-w-none leading-6 hover:prose-a:no-underline prose-headings:font-semibold prose-li:my-0 prose-p:my-0 prose-img:my-0 md:prose-h2:mt-6">
+        {{ content | safe }}
+    </div>
+{% endblock %}

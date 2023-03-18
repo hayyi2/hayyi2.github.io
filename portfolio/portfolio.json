@@ -1,0 +1,10 @@
+{
+  "title": "",
+  "categories": [],
+  "thumbnail": "",
+  "thumbnails": [""],
+  "excerpt": "", 
+  "layout": "portfolio.njk",
+  "tags": "portfolio",
+  "permalink": "portofolio/{{ title | slugify }}/index.html"
+}

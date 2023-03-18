@@ -1,0 +1,10 @@
+{
+  "title": "",
+  "categories": [],
+  "thumbnail": "",
+  "thumbnails": [""],
+  "excerpt": "", 
+  "layout": "post.njk",
+  "tags": "post",
+  "permalink": "blog/{{ title | slugify }}/index.html"
+}
