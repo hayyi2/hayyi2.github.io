@@ -7,6 +7,9 @@ module.exports = function (eleventyConfig) {
         return JSON.stringify(obj)
     });
 
+    eleventyConfig.addGlobalData("isProd", function () {
+        return process.env.ELEVENTY_RUN_MODE !== 'serve';
+    });
     eleventyConfig.addFilter('dateFormat', data => {
         var tahun = data.getFullYear();
         var bulan = data.getMonth();
