@@ -1,12 +1,10 @@
-<div class="mb-4">
-    {% if title_html %}
-        <h1 class="mb-2 text-2xl font-medium text-gray-900 sm:text-3xl sm:tracking-tight lg:text-4xl">{{ title_html | safe }}</h1>
-    {% elif title %}
-        <h1 class="mb-2 text-2xl font-medium text-gray-900 sm:text-3xl sm:tracking-tight lg:text-4xl">{{ title }}</h1>
-    {% endif %}
+<div class="mb-6">
+    <h1 class="mb-4 text-2xl font-medium text-gray-900 sm:text-3xl sm:tracking-tight lg:text-4xl">
+        {{ (title_html if title_html else title) | safe }}
+    </h1>
     {% if subtitle %}
         <div class="flex text-gray-500">
-            <span class="mb-1 text-base font-semibold">{{ subtitle }}</span>
+            <span class="text-base font-semibold">{{ subtitle }}</span>
         </div>
     {% endif %}
 </div>

@@ -1,16 +1,16 @@
 <div class="md:sticky md:top-12 select-none">
-    <div class="mb-4 md:mb-6">
+    <div class="mb-6 md:mb-8">
         <a href="{{ "/" | url }}">
             <img src="/assets/logo.svg" class="h-16 md:h-20 w-auto" alt="logo">
         </a>
     </div>
-    <div class="mb-4 md:mb-6">
+    <div class="mb-4 md:mb-8">
         <nav class="-mx-2">
-            <ul class="space-y-0 md:space-y-1 flex flex-row md:flex-col flex-wrap">
+            <ul class="flex flex-row md:flex-col flex-wrap">
                 {% for item in collections.all | eleventyNavigation %}
-                    {% set active = "bg-gray-300 text-gray-800" if item.url == page.url or(item.url != '/' and item.url in page.url) else "text-gray-500 hover:text-gray-800 hover:bg-gray-200" %}
-                    <li class="flex">
-                        <a href="{{ item.url }}" class="{{ active }} inline-flex items-center px-2 py-1 text-base font-medium rounded-md mr-1">
+                    {% set active = "bg-gray-300 text-gray-800" if item.url == page.url or(item.url != '/' and item.url in page.url) else "text-gray-400 hover:text-gray-800 hover:bg-gray-200" %}
+                    <li class="flex mb-2 mr-2">
+                        <a href="{{ item.url }}" class="{{ active }} inline-flex items-center px-2 py-1 text-base font-medium rounded-md">
                             {% if item.icon %}
                                 <span class="mr-2">{% include "icons/" + item.icon + ".html" %}</span>
                             {% endif %}
@@ -21,18 +21,18 @@
             </ul>
         </nav>
     </div>
-    <div class="hidden md:block mb-4 md:mb-6 -mx-1.5">
+    <div class="hidden md:block md:mb-8 -mx-1.5">
         <ul class="flex">
             {% if metadata.contact.github %}
                 <li>
-                    <a href="{{ metadata.contact.github.url }}" target="_blank" class="p-1.5 text-gray-500 hover:text-gray-800 hover:bg-gray-200 inline-block rounded-md">
+                    <a href="{{ metadata.contact.github.url }}" target="_blank" class="p-1.5 text-gray-400 hover:text-gray-800 hover:bg-gray-200 inline-block rounded-md">
                         {% include "icons/brand-github.html" %}
                     </a>
                 </li>
             {% endif %}
             {% if metadata.contact.whatsapp %}
                 <li>
-                    <a href="{{ "https://wa.me/" + metadata.contact.whatsapp.number }}" target="_blank" class="p-1.5 text-gray-500 hover:text-gray-800 hover:bg-gray-200 inline-block rounded-md">
+                    <a href="{{ "https://wa.me/" + metadata.contact.whatsapp.number }}" target="_blank" class="p-1.5 text-gray-400 hover:text-gray-800 hover:bg-gray-200 inline-block rounded-md">
                         {% include "icons/brand-whatsapp.html" %}
                     </a>
                 </li>

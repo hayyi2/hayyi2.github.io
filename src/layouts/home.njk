@@ -1,30 +1,31 @@
+{% from "content.njk" import displayContent %}
 {% extends "./base.njk" %}
 
 {% block contentLayout %}
     {% include "header.njk" %}
-    <div class="mb-4 md:mb-6">
-        <div class="prose max-w-none leading-6 hover:prose-a:no-underline prose-headings:font-semibold prose-li:my-0 prose-p:my-0 prose-img:my-0">
-            {{ content | safe }}
-        </div>
+    <div class="mb-4">
+        {{ displayContent(content) | safe }}
     </div>
     {% set limitPost = 3 %}
     {% if collections.post.length > 0 %}
-        <h2 class="mb-4 text-lg font-medium text-gray-900 sm:text-xl sm:tracking-tight lg:text-2xl my-4">Blog Terbaru</h2>
-        <div class="mb-4">
-            {% for post in (collections.post | reverse).slice(0, limitPost) %}
-                {% include "post-item.njk" %}
-            {% endfor %}
+        <div class="mb-6">
+            <h2 class="text-xl font-medium text-gray-900 sm:text-2xl sm:tracking-tight mb-6 mt-12">Blog Terbaru</h2>
+            <div class="mb-4">
+                {% for post in (collections.post | reverse).slice(0, limitPost) %}
+                    {% include "post-item.njk" %}
+                {% endfor %}
+            </div>
+            {% if collections.post.length > limitPost %}
+                <a href="{{ "/blog/" | url }}" class="inline-flex items-center font-semibold text-gray-900 underline hover:no-underline">
+                    <span class="mr-0.5">Lihat lebih banyak</span>
+                    <svg class="inline-block w-5 h-5" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-external-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5"></path>
+                        <path d="M10 14l10 -10"></path>
+                        <path d="M15 4l5 0l0 5"></path>
+                    </svg>
+                </a>
+            {% endif %}
         </div>
-        {% if collections.post.length > limitPost %}
-            <a href="{{ "/blog/" | url }}" class="inline-flex items-center font-semibold text-gray-900 underline hover:no-underline">
-                <span class="mr-0.5">Lihat lebih banyak</span>
-                <svg class="inline-block w-5 h-5" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-external-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5"></path>
-                    <path d="M10 14l10 -10"></path>
-                    <path d="M15 4l5 0l0 5"></path>
-                </svg>
-            </a>
-        {% endif %}
     {% endif %}
 {% endblock %}

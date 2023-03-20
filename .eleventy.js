@@ -47,6 +47,37 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
     eleventyConfig.addPlugin(syntaxHighlight);
 
+    eleventyConfig.addCollection('postCategories', collection => {
+        let catSet = {};
+        collection.getAll()
+            .filter(item => item.data.tags.includes('post'))
+            .filter(item => item.data.categories)
+            .forEach(item => {
+                item.data.categories.forEach(cat => {
+                    if (!catSet[cat]) {
+                        catSet[cat] = [];
+                    }
+                    catSet[cat].push(item)
+                });
+            });
+        return catSet;
+    });
+    eleventyConfig.addCollection('portfolioCategories', collection => {
+        let catSet = {};
+        collection.getAll()
+            .filter(item => item.data.tags.includes('portfolio'))
+            .filter(item => item.data.categories)
+            .forEach(item => {
+                item.data.categories.forEach(cat => {
+                    if (!catSet[cat]) {
+                        catSet[cat] = [];
+                    }
+                    catSet[cat].push(item)
+                });
+            });
+        return catSet;
+    });
+
     return {
         dir: {
             input: "./",

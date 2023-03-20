@@ -1,24 +1,67 @@
+{% from "content.njk" import displayContent %}
 {% extends "./base.njk" %}
 
 {% block contentLayout %}
-    <div class="pb-4">
-        {% if title_html %}
-            <h1 class="mb-2 text-2xl font-medium text-gray-900 sm:text-3xl sm:tracking-tight lg:text-4xl">{{ title_html | safe }}</h1>
-        {% elif title %}
-            <h1 class="mb-2 text-2xl font-medium text-gray-900 sm:text-3xl sm:tracking-tight lg:text-4xl">{{ title }}</h1>
-        {% endif %}
-        {# <div class="flex text-gray-500">
-            <div class="inline-flex items-center">
-                <span class="text-base font-semibold">Jenis Portfolio</span>
-            </div>
-        </div> #}
+    <div class="mb-6">
+        <h1 class="mb-4 text-2xl font-medium text-gray-900 sm:text-3xl sm:tracking-tight lg:text-4xl">
+            {{ (title_html if title_html else title) | safe }}
+        </h1>
+        <div class="flex text-gray-500">
+            {% if categories.length %}
+                <div class="inline-flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 icon icon-tabler icon-tabler-tags" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M7.859 6h-2.834a2.025 2.025 0 0 0 -2.025 2.025v2.834c0 .537 .213 1.052 .593 1.432l6.116 6.116a2.025 2.025 0 0 0 2.864 0l2.834 -2.834a2.025 2.025 0 0 0 0 -2.864l-6.117 -6.116a2.025 2.025 0 0 0 -1.431 -.593z"></path>
+                        <path d="M17.573 18.407l2.834 -2.834a2.025 2.025 0 0 0 0 -2.864l-7.117 -7.116"></path>
+                        <path d="M6 9h-.01"></path>
+                    </svg>
+                    <ul class="inline-flex font-semibold">
+                        {% for category in categories %}
+                            <li class="flex">
+                                <a href="{{ "/portofolio/kategori/"+(category | slugify) + "/" | url }}" class="hover:underline">{{ category }}</a>
+                                {% if not loop.last %}
+                                    <span>,&nbsp; </span>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
     </div>
-    {% if thumbnail %}
-        <div class="mb-4 md:mb-6 pt-4">
+    {% if thumbnails.length %}
+        <div class="mb-4 pt-2">
+            <div class="mb-2">
+                <div class="slide">
+                    <img src="{{ thumbnail }}" alt="Thumbnail" class="rounded-lg">
+                </div>
+                {% for item in thumbnails %}
+                    <div class="slide hidden">
+                        <img src="{{ item }}" alt="Thumbnail" class="rounded-lg">
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="flex flex-wrap">
+                <div class="dot mr-2 mb-2" onclick="currentSlide(1)">
+                    <button>
+                        <img src="{{ thumbnail }}" alt="Thumbnail" class="h-12 rounded-md ring-2 ring-offset-2 ring-gray-800">
+                    </button>
+                </div>
+                {% for item in thumbnails %}
+                    <div class="dot mr-2 mb-2">
+                        <button onclick="currentSlide({{ loop.index + 1 }})">
+                            <img src="{{ item }}" alt="Thumbnail" class="h-12 rounded-md ring-2 ring-offset-2 ring-transparent">
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% elif thumbnail %}
+        <div class="mb-4 md:mb-6 pt-2">
             <img src="{{ thumbnail }}" alt="{{ title }}" class="rounded-lg">
         </div>
     {% endif %}
-    <div class="prose max-w-none leading-6 hover:prose-a:no-underline prose-headings:font-semibold prose-li:my-0 prose-p:my-0 prose-img:my-0 md:prose-h2:mt-6">
-        {{ content | safe }}
+    <div class="mb-8">
+        {{ displayContent(content) | safe }}
     </div>
 {% endblock %}

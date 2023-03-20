@@ -1,6 +1,6 @@
 ---
 title: "Portofolio"
-subtitle: "Portofolio proyek yang telah saya bangun"
+subtitle: "Portofolio proyek"
 layout: portfolios.njk
 eleventyNavigation:
     key: portofolio

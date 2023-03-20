@@ -3,7 +3,7 @@ title: "Sample markdown content"
 date: 2023-03-17
 thumbnail: "/uploads/sample-thumb-red-500.png"
 excerpt: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis eligendi fugit obcaecati temporibus magnam voluptas dicta aliquam, quos ipsum blanditiis nobis vitae sunt veritatis corporis odit voluptatum dolorem dolore saepe."
-# eleventyExcludeFromCollections: true
+eleventyExcludeFromCollections: true
 ---
 Sample markdown content
 

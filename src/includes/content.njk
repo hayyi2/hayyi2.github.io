@@ -1,0 +1,5 @@
+{% macro displayContent(contentData) %}
+    <div class="prose-sm md:prose max-w-none md:max-w-none">
+        {{ contentData | safe }}
+    </div>
+{% endmacro %}

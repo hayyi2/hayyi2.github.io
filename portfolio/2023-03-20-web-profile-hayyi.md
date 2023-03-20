@@ -1,12 +1,12 @@
 ---
-title: "Sample post dua"
+title: Web Profile Hayyi
 categories: 
-    - Sample
-    - Tool
-date: 2023-03-18
-thumbnail: "/uploads/sample-thumb-green-500.png"
+    - Web Profile
+date: 2023-03-20
+thumbnail: "/uploads/2023-03-20-web-profile-hayyi/home.jpg"
+thumbnails:
+    - "/uploads/2023-03-20-web-profile-hayyi/portfolio.jpg"
+    - "/uploads/2023-03-20-web-profile-hayyi/blog.jpg"
 excerpt: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis eligendi fugit obcaecati temporibus magnam voluptas dicta aliquam, quos ipsum blanditiis nobis vitae sunt veritatis corporis odit voluptatum dolorem dolore saepe."
-eleventyExcludeFromCollections: true
 ---
-
-Sample post dua update
+Sample post
