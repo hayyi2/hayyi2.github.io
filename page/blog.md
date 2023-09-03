@@ -1,6 +1,6 @@
 ---
 title: "Blog"
-subtitle: "Catatan pengembangan"
+subtitle: "Catatan opini dan pengembangan"
 layout: "posts.njk"
 eleventyNavigation:
     title: Blog
